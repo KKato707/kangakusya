@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>アヒル雑草農法｜農と鳥による新たな循環農法</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-gray-800 font-sans">
+
+<!-- ナビゲーションバー -->
+<nav id="nav-bar" class="transition-all duration-300 fixed left-0 right-0 z-50 bg-white/50 text-gray-800 px-6 py-3 flex justify-between items-center bottom-0">
+  <div class="text-xl font-bold relative">
+  <img src="ahiru-logo.png" class="h-10 w-auto" alt="アヒル農法ロゴ">
+</div>
+  <div class="space-x-6 hidden md:flex">
+    <a href="#products" class="hover:underline">商品</a>
+    <a href="#live" class="hover:underline">ライブ</a>
+    <a href="#support" class="hover:underline">サポーター</a>
+    <a href="#contacts" class="hover:underline">注文</a>
+  </div>
+</nav>
+
+<script>
+  window.addEventListener('scroll', function () {
+    const nav = document.getElementById('nav-bar');
+    const hero = document.querySelector('header');
+    const heroHeight = hero.offsetHeight;
+    const scrollY = window.scrollY;
+
+    if (scrollY === 0) {
+      // Heroの画面下部・白背景・黒文字・表示
+      nav.classList.remove('top-0', 'bg-black/50', 'backdrop-blur-sm', 'text-white', 'opacity-0', 'pointer-events-none');
+      nav.classList.add('bottom-0', 'bg-white/50', 'text-gray-800', 'opacity-100');
+    } else if (scrollY > 0 && scrollY < heroHeight) {
+      // Hero内でスクロール中 → 非表示（画面下部）
+      nav.classList.add('opacity-0', 'pointer-events-none');
+    } else {
+      // Hero外 → 画面上部・黒半透明・白文字・表示
+      nav.classList.remove('bottom-0', 'bg-white', 'text-gray-800', 'opacity-0', 'pointer-events-none');
+      nav.classList.add('top-0', 'bg-black/50', 'backdrop-blur-sm', 'text-white', 'opacity-100');
+    }
+  });
+</script>
+
+<!-- Hero Section -->
+  <header class="relative bg-cover bg-center h-screen" style="background-image: url('https://photock.jp/photo/big_webp/photo0000-4164.webp');">
+    <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-white text-center px-4">
+      <h1 class="text-4xl md:text-6xl font-bold mb-4">アヒルと育てる</h1>
+      <p class="text-lg md:text-2xl mb-6">雑草も除草剤も不使用</p>
+      <a href="#about" class="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-full shadow-lg transition">農法を知る</a>
+    </div>
+  </header>
+
+  <!-- Farming Method -->
+<section id="about" class="py-16 px-6 bg-cover bg-center bg-fixed bg-white/50 bg-blend-overlay"
+  style="background-image: url('https://as2.ftcdn.net/v2/jpg/02/31/56/61/1000_F_231566167_DcxyiS11UCKdIoFpPdkXFpAzeVhh6qFA.jpg');">
+
+  <div class="max-w-5xl mx-auto text-left bg-white/80 p-8 rounded-lg shadow">
+    <h2 class="text-3xl font-bold mb-4">アヒル雑草農法とは？</h2>
+    <p class="text-gray-700 text-lg mb-6">鳥の力で雑草や害虫を抑制する持続可能な農業スタイルです。</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+      <div class="bg-white p-6 rounded-lg shadow">
+        <h3 class="font-semibold text-xl mb-2">🐤 アヒルが除草</h3>
+        <p>田んぼの雑草や虫を食べてくれる、働き者のアヒルたち。</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow">
+        <h3 class="font-semibold text-xl mb-2">🌾 土壌が豊かに</h3>
+        <p>アヒルが動き回ることで土壌が自然と耕される</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow">
+        <h3 class="font-semibold text-xl mb-2">♻️ 無農薬・無除草剤</h3>
+        <p>安全・安心な農作物を育てることができます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Products -->
+<section id="products" class="py-16 px-6 bg-cover bg-center bg-fixed bg-white/50 bg-blend-overlay"
+  style="background-image: url('https://as2.ftcdn.net/v2/jpg/02/31/56/61/1000_F_231566167_DcxyiS11UCKdIoFpPdkXFpAzeVhh6qFA.jpg');">
+  <div class="max-w-5xl mx-auto text-left bg-white/80 p-8 rounded-lg shadow">
+      <h2 class="text-3xl font-bold mb-8">アヒル農法で育てた商品</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-lg shadow">
+          <img src="https://sozaiya-san.jp/wp-content/uploads/2021/04/%E9%87%8E%E8%8F%9C%E9%A1%9E_%E5%B0%8F%E6%9D%BE%E8%8F%9C_005_86mm_3g.png" class="rounded-t-lg" />
+          <div class="p-4 text-left">
+            <h3 class="font-semibold text-xl">アヒル米</h3>
+            <p>商品A</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow">
+          <img src="https://sozaiya-san.jp/wp-content/uploads/2023/06/%E9%87%8E%E8%8F%9C%E9%A1%9E_%E3%82%B4%E3%83%BC%E3%83%A4_021_111mm_49g.png" class="rounded-t-lg" />
+          <div class="p-4 text-left">
+            <h3 class="font-semibold text-xl">商品B</h3>
+            <p>商品Bの説明</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow">
+          <img src="https://sozaiya-san.jp/wp-content/uploads/2023/10/%E8%AA%BF%E7%90%86%E5%8A%A0%E5%B7%A5%E9%A3%9F%E5%93%81%E9%A1%9E_%E3%81%8A%E3%81%A7%E3%82%93%E3%81%AE%E5%85%B7%EF%BC%88%E3%81%9F%E3%81%BE%E3%81%94%EF%BC%89_007_45mm_58g.png" class="rounded-t-lg" />
+          <div class="p-4 text-left">
+            <h3 class="font-semibold text-xl">商品C</h3>
+            <p>商品Bの説明</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SNS -->
+<section id="live"
+  class="py-16 px-6 bg-cover bg-center bg-fixed bg-white/50 bg-blend-overlay"
+  style="background-image: url('https://as2.ftcdn.net/v2/jpg/02/31/56/61/1000_F_231566167_DcxyiS11UCKdIoFpPdkXFpAzeVhh6qFA.jpg');">
+  <div class="max-w-5xl mx-auto text-center bg-white/80 p-8 rounded-lg shadow">
+  <h2 class="text-3xl font-bold mb-8">最近のアヒルの様子</h2>
+    <p class="mb-6">アヒルツイート</p>
+    <div class="mb-6">
+<a class="twitter-timeline"
+   data-height="500"
+   data-width="100%"
+   data-theme="dark"
+   data-chrome="noheader nofooter"
+   data-tweet-limit="3"
+   href="https://x.com/FWlBxxX25bVO7La/status/1933067482669199625">
+   Tweets by ahiru_farm
+</a> 
+  <script async src="https://platform.twitter.com/widgets.js" allowfullscreen class="mx-auto" charset="utf-8">
+  </script>
+</div>
+    <div class="flex justify-center space-x-6">
+      <a href="https://twitter.com/" class="text-blue-500 hover:underline">Twitter</a>
+      <a href="https://instagram.com/" class="text-blue-500 hover:underline">Instagram</a>
+      <a href="https://facebook.com/" class="text-blue-700 hover:underline">Facebook</a>
+    </div>
+  </section>
+
+  <!-- Subscription Plans -->
+<section id="support"
+  class="py-16 px-6 bg-cover bg-center bg-fixed bg-white/50 bg-blend-overlay"
+  style="background-image: url('https://as2.ftcdn.net/v2/jpg/02/31/56/61/1000_F_231566167_DcxyiS11UCKdIoFpPdkXFpAzeVhh6qFA.jpg');">   
+   <div class="max-w-5xl mx-auto text-left bg-white/80 p-8 rounded-lg shadow">
+      <h2 class="text-3xl font-bold mb-6">サポーター制度</h2>
+      <p class="mb-4">サポーター制度の説明</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h3 class="text-xl font-semibold mb-2">サブスクA</h3>
+          <p>サブスクA　XXX円/月</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h3 class="text-xl font-semibold mb-2">サブスクB</h3>
+          <p>サブスクB　XXX円/月</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h3 class="text-xl font-semibold mb-2">サブスクC</h3>
+          <p>サブスクC</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Purchase Form -->
+<section id="contacts"
+  class="py-16 px-6 bg-cover bg-center bg-fixed bg-white/50 bg-blend-overlay"
+  style="background-image: url('https://as2.ftcdn.net/v2/jpg/02/31/56/61/1000_F_231566167_DcxyiS11UCKdIoFpPdkXFpAzeVhh6qFA.jpg');">
+    <div class="max-w-xl mx-auto">
+      <h2 class="text-3xl font-bold mb-6 text-center">注文・問い合わせ</h2>
+      <form class="space-y-4">
+        <input type="text" placeholder="お名前" class="w-full p-3 border rounded" required />
+        <input type="email" placeholder="メールアドレス" class="w-full p-3 border rounded" required />
+        <select class="w-full p-3 border rounded">
+          <option>注文内容を選択</option>
+          <option>商品A</option>
+          <option>商品B</option>
+          <option>サブスクA</option>
+          <option>サブスクB</option>
+          <option>その他問B合わせ</option>
+        </select>
+        <textarea placeholder="ご希望内容や質問をご記入ください" class="w-full p-3 border rounded h-32"></textarea>
+        <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded transition">送信する</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-6 bg-gray-800 text-white">
+    <p>&copy; 2025 アヒル雑草農法プロジェクト All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

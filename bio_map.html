@@ -1,12 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>棚田の生物マップ</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
@@ -26,7 +25,7 @@
     #map {
       width: 80%;
       height: 450px;
-      margin-bottom: 20px;
+      margin: 20px auto;
     }
     #images {
       display: grid;
@@ -67,37 +66,80 @@
         padding: 1rem;
       }
     }
+
+    /* 埋め込みリンク用のカード */
+    .embed-card {
+      max-width: 230px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgb(0 0 0 / 0.1);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      margin: 20px auto;
+    }
+    .embed-card a {
+      display: block;
+      padding: 12px 16px;
+      text-decoration: none;
+      color: #333;
+    }
+    .embed-card .title {
+      font-weight: 600;
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+    .embed-card .description {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 8px;
+    }
+    .embed-card iframe {
+      width: 100%;
+      height: 200px;
+      border: none;
+    }
+    .embed-card .url {
+      padding: 8px 16px;
+      font-size: 13px;
+      color: #1a73e8;
+    }
   </style>
 </head>
 <body>
 
 <header>棚田の生物マップ</header>
-  
-<div style="max-width: 400px; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgb(0 0 0 / 0.1); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <a href="https://goryotanadabiomap.glide.page" target="_blank" rel="noopener noreferrer" style="display: block; padding: 12px 16px; text-decoration: none; color: #333;">
-    <div style="font-weight: 600; font-size: 16px; margin-bottom: 4px;">御領棚田生物マップ調査用（Webアプリ）</div>
-    <div style="font-size: 14px; color: #666; margin-bottom: 8px;">
+
+  <p style="text-align: center; font-size: 1rem; color: #555; margin: 1rem;">
+  webアプリを使用してスマホで調査を実施しました。
+</p>
+
+<!-- 埋め込みリンクカード -->
+<div class="embed-card">
+  <a href="https://goryotanadabiomap.glide.page" target="_blank" rel="noopener noreferrer">
+    <div class="title">御領棚田生物マップ調査用（Webアプリ）</div>
+    <div class="description">
       参加者が調査員となりスマホで生物情報をマッピングできる簡易的なアプリです。
     </div>
   </a>
-  <iframe src="https://goryotanadabiomap.glide.page" style="width: 100%; height: 200px; border: none;" scrolling="no" loading="lazy"></iframe>
-  <div style="padding: 8px 16px; font-size: 13px; color: #1a73e8;">
-    https://goryotanadabiomap.glide.page
-  </div>
+  <iframe src="https://goryotanadabiomap.glide.page" scrolling="no" loading="lazy"></iframe>
+  <div class="url">https://goryotanadabiomap.glide.page</div>
 </div>
-  
-  <!-- Map container -->
-    <div id="map"></div>
 
-    <!-- Images container -->
-    <div id="images">
+<!-- Map container -->
+<div id="map"></div>
 
-        <div class="image-container" id="image-0" onclick="highlightMarker(0)">
-            <img src="https://storage.googleapis.com/glide-prod.appspot.com/uploads-v2/ePY4ewNcxH5kRKabw4Qb/pub/c08PXOwwQ1BFMoiyNOcA.png" alt="ニホンアマガエル" title="ニホンアマガエル">
-            <p>ニホンアマガエル</p>
-            <p>調査員: アコニチン</p>
-        </div>
-    
+<!-- Images container -->
+    <p style="text-align: center; font-size: 1rem; color: #555; margin: 1rem;">
+ 調査後の公開マップ
+</p>
+<div id="images">
+
+  <div class="image-container" id="image-0" onclick="highlightMarker(0)">
+    <img src="https://storage.googleapis.com/glide-prod.appspot.com/uploads-v2/ePY4ewNcxH5kRKabw4Qb/pub/c08PXOwwQ1BFMoiyNOcA.png" alt="ニホンアマガエル" title="ニホンアマガエル" />
+    <p>ニホンアマガエル</p>
+    <p>調査員: アコニチン</p>
+  </div>
+
         <div class="image-container" id="image-1" onclick="highlightMarker(1)">
             <img src="https://storage.googleapis.com/glide-prod.appspot.com/uploads-v2/ePY4ewNcxH5kRKabw4Qb/pub/gplxlfOUMicwQMDdNRZ5.jpg" alt="ニホンカナヘビ" title="ニホンカナヘビ">
             <p>ニホンカナヘビ</p>

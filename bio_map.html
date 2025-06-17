@@ -67,71 +67,103 @@
       }
     }
 
-    /* 埋め込みリンク用のカード */
     .embed-card {
-      max-width: 300px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 1px 3px rgb(0 0 0 / 0.1);
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      margin: 20px auto;
-    }
-    .embed-card a {
-      display: block;
-      padding: 12px 16px;
-      text-decoration: none;
-      color: #333;
-    }
-    .embed-card .title {
-      font-weight: 600;
-      font-size: 16px;
-      margin-bottom: 4px;
-    }
-    .embed-card .description {
-      font-size: 14px;
-      color: #666;
-      margin-bottom: 8px;
-    }
-    .embed-card iframe {
-      width: 100%;
-      height: 200px;
-      border: none;
-    }
-    .embed-card .url {
-      padding: 8px 16px;
-      font-size: 13px;
-      color: #1a73e8;
-    }
+  max-width: 600px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  margin: 20px auto;
+  transition: transform 0.2s;
+}
+.embed-card:hover {
+  transform: scale(1.02);
+}
+.embed-link {
+  display: flex;
+  text-decoration: none;
+  color: inherit;
+  align-items: stretch;
+  height: 100%;
+}
+.embed-content {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.embed-text {
+  flex: 2;
+  padding: 16px;
+}
+.embed-image {
+  flex: 1;
+  min-width: 120px;
+  max-width: 180px;
+  overflow: hidden;
+}
+.embed-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.title {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+.description {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+}
+.url {
+  font-size: 13px;
+  color: #1a73e8;
+}
+@media (max-width: 600px) {
+  .embed-content {
+    flex-direction: column;
+  }
+  .embed-image {
+    max-height: 150px;
+  }
+}
+
   </style>
 </head>
 <body>
 
 <header>棚田の生物マップ</header>
 
-  <p style="text-align: center; font-size: 1rem; color: #555; margin: 1rem;">
-  webアプリを使用してスマホで調査を実施しました。
-</p>
+  <p style="text-align: center; font-size: 1.5rem; color: #555; margin: 1rem;">調査専用webアプリを用いて<br>スマホで調査を実施しました。</p>
 
-<!-- 埋め込みリンクカード -->
+<!-- 埋め込みリンクカード（修正版） -->
 <div class="embed-card">
-  <a href="https://goryotanadabiomap.glide.page" target="_blank" rel="noopener noreferrer">
-    <div class="title">御領棚田生物マップ調査用（Webアプリ）</div>
-    <div class="description">
-      参加者が調査員となりスマホで生物情報をマッピングできる簡易的なアプリです。
+  <a href="https://goryotanadabiomap.glide.page" target="_blank" rel="noopener noreferrer" class="embed-link">
+    <div class="embed-content">
+      <div class="embed-text">
+        <div class="title">御領棚田生物マップ調査用（Webアプリ）</div>
+        <div class="description">
+          参加者が調査員となりスマホで生物情報をマッピングできる簡易的なアプリです。
+        </div>
+        <div class="url">https://goryotanadabiomap.glide.page</div>
+      </div>
+      <div class="embed-image">
+        <img src="webapp.png" alt="Webアプリ画像" />
+      </div>
     </div>
   </a>
-  <iframe src="https://goryotanadabiomap.glide.page" scrolling="no" loading="lazy"></iframe>
-  <div class="url">https://goryotanadabiomap.glide.page</div>
 </div>
+
+    <p style="text-align: center; font-size: 1.5rem; color: #555; margin: 1rem;">調査後の公開マップ</p>
 
 <!-- Map container -->
 <div id="map"></div>
 
 <!-- Images container -->
-    <p style="text-align: center; font-size: 1rem; color: #555; margin: 1rem;">
- 調査後の公開マップ
-</p>
+
 <div id="images">
 
   <div class="image-container" id="image-0" onclick="highlightMarker(0)">

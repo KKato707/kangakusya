@@ -136,20 +136,20 @@
 
 
 <!-- 問い合わせフォーム -->
-<form class="space-y-4" method="POST" action="send_mail.php">
-  <input type="text" name="name" placeholder="お名前" class="w-full p-3 border rounded" required />
-  <input type="email" name="email" placeholder="メールアドレス" class="w-full p-3 border rounded" required />
-  <select name="topic" class="w-full p-3 border rounded" required>
+<form method="POST" action="https://formsubmit.co/あなたのメールアドレス" class="space-y-4">
+  <input type="text" name="name" required placeholder="お名前" class="w-full p-3 border rounded" />
+  <input type="email" name="email" required placeholder="メールアドレス" class="w-full p-3 border rounded" />
+  <select name="topic" required class="w-full p-3 border rounded">
     <option value="">お問い合わせ内容を選択</option>
     <option value="バイオマス">バイオマスに関して</option>
     <option value="雑草農法">雑草農法に関して</option>
     <option value="棚田">棚田に関して</option>
     <option value="その他">その他</option>
   </select>
-  <textarea name="message" placeholder="ご希望内容や質問をご記入ください" class="w-full p-3 border rounded h-32" required></textarea>
+  <textarea name="message" required placeholder="ご希望内容や質問をご記入ください" class="w-full p-3 border rounded h-32"></textarea>
   <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded transition">送信する</button>
 </form>
-
+  
   <!-- Footer -->
   <footer class="text-center py-6 bg-gray-800 text-white">
     <p>&copy; 2025 環境楽者（かんきょうがくしゃ） All rights reserved.</p>

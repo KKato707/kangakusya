@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>｜環境楽社｜</title>
+  <title>環境楽社HP</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-white text-gray-800 font-sans">
 
 <!-- ナビゲーションバー -->
-<nav id="nav-bar" class="transition-all duration-300 fixed left-0 right-0 z-50 bg-white/50 text-gray-800 px-6 py-3 flex justify-between items-center bottom-0">
+<nav id="nav-bar" class="transition-all duration-300 fixed left-0 right-0 z-100 bg-white/50 text-gray-800 px-6 py-3 flex justify-between items-center bottom-0">
   <div class="text-xl font-bold relative">
-  <img src="ahiru-logo.png" class="h-10 w-auto" alt="ロゴ">
+  <img src="ahiru-logo.png" class="h-20 w-auto" alt="ロゴ">
 </div>
    <div class="space-x-6 flex text-xl text-white">
     <a href="#act1" class="hover:underline">火</a>
-    <a href="#act2" class="hover:underline">棚</a>
+    <a href="#act2" class="hover:underline">棚田</a>
     <a href="#SNS" class="hover:underline">農</a>
-    <a href="#contacts" class="hover:underline">連絡</a>
+    <a href="#contacts" class="hover:underline">連絡先</a>
   </div>
 </nav>
 
@@ -56,17 +56,29 @@
 <section id="act1" class="py-16 px-6 bg-cover bg-center bg-fixed bg-white/50 bg-blend-overlay"
   style="background-image: url('background1.jpg');">
   <div class="max-w-5xl mx-auto text-center bg-white/80 p-8 rounded-lg shadow">
-      <h2 class="text-3xl font-bold mb-8">火に関する活動</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-        <div class="bg-white rounded-lg shadow">
-          <img src="画像リンク" class="rounded-t-lg" />
-          <div class="p-4 text-center">
-            <h3 class="font-semibold text-xl">ゼロカーボンファイヤ</h3>
-            <p>説明</p>
-          </div>
+    <h2 class="text-3xl font-bold mb-8">火に関する活動</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      <div class="bg-white rounded-lg shadow">
+        <img src="画像リンク" class="rounded-t-lg" />
+        <div class="p-4 text-center">
+          <h3 class="font-semibold text-xl">ゼロカーボンファイヤ</h3>
+          <p>「火×落葉落枝×エネルギー教育」の大学モデル<br>脱炭素をエネルギー消費の削減から達成することを目指しています</p>
         </div>
       </div>
- </section>
+    </div>
+        <!-- PDF埋め込み部分 -->
+    <div class="mb-8">
+      <div class="aspect-w-16 aspect-h-9">
+        <iframe 
+          src="zerocarbon.pdf" 
+          class="w-full h-[600px] border rounded"
+          frameborder="0">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <!-- Act2 棚田-->
 <section id="act2" class="py-16 px-6 bg-cover bg-center bg-fixed bg-white/50 bg-blend-overlay"

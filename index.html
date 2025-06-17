@@ -135,27 +135,20 @@
 
 
 
-  <!-- 問い合わせフォーム -->
-<section id="contacts"
-  class="py-16 px-6 bg-cover bg-center bg-fixed bg-white/50 bg-blend-overlay"
-  style="background-image: url('background1.jpg');">
-    <div class="max-w-xl mx-auto">
-      <h2 class="text-3xl font-bold mb-6 text-center">お問い合わせ</h2>
-      <form class="space-y-4">
-        <input type="text" placeholder="お名前" class="w-full p-3 border rounded" required />
-        <input type="email" placeholder="メールアドレス" class="w-full p-3 border rounded" required />
-        <select class="w-full p-3 border rounded">
-          <option>お問い合わせ内容を選択</option>
-          <option>バイオマスに関して</option>
-          <option>雑草農法に関して</option>
-          <option>棚田に関して</option>
-          <option>その他</option>
-        </select>
-        <textarea placeholder="ご希望内容や質問をご記入ください" class="w-full p-3 border rounded h-32"></textarea>
-        <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded transition">送信する</button>
-      </form>
-    </div>
-  </section>
+<!-- 問い合わせフォーム -->
+<form class="space-y-4" method="POST" action="send_mail.php">
+  <input type="text" name="name" placeholder="お名前" class="w-full p-3 border rounded" required />
+  <input type="email" name="email" placeholder="メールアドレス" class="w-full p-3 border rounded" required />
+  <select name="topic" class="w-full p-3 border rounded" required>
+    <option value="">お問い合わせ内容を選択</option>
+    <option value="バイオマス">バイオマスに関して</option>
+    <option value="雑草農法">雑草農法に関して</option>
+    <option value="棚田">棚田に関して</option>
+    <option value="その他">その他</option>
+  </select>
+  <textarea name="message" placeholder="ご希望内容や質問をご記入ください" class="w-full p-3 border rounded h-32" required></textarea>
+  <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded transition">送信する</button>
+</form>
 
   <!-- Footer -->
   <footer class="text-center py-6 bg-gray-800 text-white">

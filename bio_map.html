@@ -1,0 +1,421 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location Map</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+    <style>
+        #map {
+            width: 100%;
+            height: 400px;
+        }
+        .image-container {
+            display: inline-block;
+            margin: 10px;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+        .image-container img {
+            width: 100px;
+            height: 100px;
+        }
+        .selected {
+            border-color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- Map container -->
+    <div id="map"></div>
+
+    <!-- Images container -->
+    <div id="images">
+
+        <div class="image-container" id="image-0" onclick="highlightMarker(0)">
+            <img src="https://storage.googleapis.com/glide-prod.appspot.com/uploads-v2/ePY4ewNcxH5kRKabw4Qb/pub/c08PXOwwQ1BFMoiyNOcA.png" alt="ニホンアマガエル" title="ニホンアマガエル">
+            <p>ニホンアマガエル</p>
+            <p>調査員: アコニチン</p>
+        </div>
+    
+        <div class="image-container" id="image-1" onclick="highlightMarker(1)">
+            <img src="https://storage.googleapis.com/glide-prod.appspot.com/uploads-v2/ePY4ewNcxH5kRKabw4Qb/pub/gplxlfOUMicwQMDdNRZ5.jpg" alt="ニホンカナヘビ" title="ニホンカナヘビ">
+            <p>ニホンカナヘビ</p>
+            <p>調査員: アコニチン</p>
+        </div>
+    
+        <div class="image-container" id="image-2" onclick="highlightMarker(2)">
+            <img src="https://storage.googleapis.com/glide-prod.appspot.com/uploads-v2/ePY4ewNcxH5kRKabw4Qb/pub/ZXbexaH2nZyFZr5MkE9l.jpg" alt="トノサマガエル" title="トノサマガエル">
+            <p>トノサマガエル</p>
+            <p>調査員: アコニチン</p>
+        </div>
+    
+        <div class="image-container" id="image-3" onclick="highlightMarker(3)">
+            <img src="https://storage.googleapis.com/glide-prod.appspot.com/uploads-v2/ePY4ewNcxH5kRKabw4Qb/pub/HpEHLtNy9kFWFqqEKYql.jpeg" alt="イナゴ" title="イナゴ">
+            <p>イナゴ</p>
+            <p>調査員: サエ</p>
+        </div>
+    
+        <div class="image-container" id="image-4" onclick="highlightMarker(4)">
+            <img src="https://storage.googleapis.com/glide-prod.appspot.com/uploads-v2/ePY4ewNcxH5kRKabw4Qb/pub/GQuvFtxpibnew56mO7an.png" alt="キセイバチ" title="キセイバチ">
+            <p>キセイバチ</p>
+            <p>調査員: シンカイ</p>
+        </div>
+    
+        <div class="image-container" id="image-5" onclick="highlightMarker(5)">
+            <img src="https://storage.googleapis.com/glide-prod.appspot.com/uploads-v2/ePY4ewNcxH5kRKabw4Qb/pub/vRFMW0KeShhwUBolhNKG.jpg" alt="マダラバッタ" title="マダラバッタ">
+            <p>マダラバッタ</p>
+            <p>調査員: みう</p>
+        </div>
+    
+        <div class="image-container" id="image-6" onclick="highlightMarker(6)">
+            <img src="https://storage.googleapis.com/glide-prod.appspot.com/uploads-v2/ePY4ewNcxH5kRKabw4Qb/pub/rrQqsZSLn0hzR7ayVlMh.png" alt="キセイバチ" title="キセイバチ">
+            <p>キセイバチ</p>
+            <p>調査員: もち</p>
+        </div>
+    
+        <div class="image-container" id="image-7" onclick="highlightMarker(7)">
+            <img src="https://storage.googleapis.com/glide-prod.appspot.com/uploads-v2/ePY4ewNcxH5kRKabw4Qb/pub/gldTC4ocMIUgctfEasyv.jpeg" alt="ニホンアマガエル" title="ニホンアマガエル">
+            <p>ニホンアマガエル</p>
+            <p>調査員: ゆい</p>
+        </div>
+    
+        <div class="image-container" id="image-8" onclick="highlightMarker(8)">
+            <img src="https://storage.googleapis.com/glide-prod.appspot.com/uploads-v2/ePY4ewNcxH5kRKabw4Qb/pub/ELPYTlBs3p8BeNI0XGQD.png" alt="ヨコバイ" title="ヨコバイ">
+            <p>ヨコバイ</p>
+            <p>調査員: シンカイ</p>
+        </div>
+    
+        <div class="image-container" id="image-9" onclick="highlightMarker(9)">
+            <img src="https://storage.googleapis.com/glide-prod.appspot.com/uploads-v2/ePY4ewNcxH5kRKabw4Qb/pub/nON2kGdBoWlz9RofIVUf.JPG" alt="マダラバッタ" title="マダラバッタ">
+            <p>マダラバッタ</p>
+            <p>調査員: たいどう</p>
+        </div>
+    
+        <div class="image-container" id="image-10" onclick="highlightMarker(10)">
+            <img src="https://storage.googleapis.com/glide-prod.appspot.com/uploads-v2/ePY4ewNcxH5kRKabw4Qb/pub/QQwhc6SHhXLMmFrGEk5y.jpeg" alt="コオロギ" title="コオロギ">
+            <p>コオロギ</p>
+            <p>調査員: もち</p>
+        </div>
+    
+        <div class="image-container" id="image-11" onclick="highlightMarker(11)">
+            <img src="https://storage.googleapis.com/glide-prod.appspot.com/uploads-v2/ePY4ewNcxH5kRKabw4Qb/pub/J7SDnaB72mOntHsfrieU.jpg" alt="コオロギ" title="コオロギ">
+            <p>コオロギ</p>
+            <p>調査員: ゆい</p>
+        </div>
+    
+        <div class="image-container" id="image-12" onclick="highlightMarker(12)">
+            <img src="https://storage.googleapis.com/glide-prod.appspot.com/uploads-v2/ePY4ewNcxH5kRKabw4Qb/pub/qe2VDLFOvNuVRKjMBhMb.jpg" alt="マダラバッタ" title="マダラバッタ">
+            <p>マダラバッタ</p>
+            <p>調査員: シンカイ</p>
+        </div>
+    
+        <div class="image-container" id="image-13" onclick="highlightMarker(13)">
+            <img src="https://storage.googleapis.com/glide-prod.appspot.com/uploads-v2/ePY4ewNcxH5kRKabw4Qb/pub/mHEVNfD4HlaD3sQxoiTP.jpg" alt="キリギリス" title="キリギリス">
+            <p>キリギリス</p>
+            <p>調査員: シンカイ</p>
+        </div>
+    
+        <div class="image-container" id="image-14" onclick="highlightMarker(14)">
+            <img src="https://storage.googleapis.com/glide-prod.appspot.com/uploads-v2/ePY4ewNcxH5kRKabw4Qb/pub/dxtRqnHpJSO8fuEQfnTl.jpeg" alt="バッタ" title="バッタ">
+            <p>バッタ</p>
+            <p>調査員: もち</p>
+        </div>
+    
+        <div class="image-container" id="image-15" onclick="highlightMarker(15)">
+            <img src="https://storage.googleapis.com/glide-prod.appspot.com/uploads-v2/ePY4ewNcxH5kRKabw4Qb/pub/iFuQXpMG8bMsKanYYxdi.jpg" alt="ニホンアマガエル" title="ニホンアマガエル">
+            <p>ニホンアマガエル</p>
+            <p>調査員: シンカイ</p>
+        </div>
+    
+        <div class="image-container" id="image-16" onclick="highlightMarker(16)">
+            <img src="https://storage.googleapis.com/glide-prod.appspot.com/uploads-v2/ePY4ewNcxH5kRKabw4Qb/pub/ckHQkOVlyPqW0OkHUrnU.png" alt="イナゴ" title="イナゴ">
+            <p>イナゴ</p>
+            <p>調査員: そら</p>
+        </div>
+    
+        <div class="image-container" id="image-17" onclick="highlightMarker(17)">
+            <img src="https://storage.googleapis.com/glide-prod.appspot.com/uploads-v2/ePY4ewNcxH5kRKabw4Qb/pub/TgxdmrAF8RUpprRKF0y9.JPG" alt="蜘蛛" title="蜘蛛">
+            <p>蜘蛛</p>
+            <p>調査員: たいどう</p>
+        </div>
+    
+        <div class="image-container" id="image-18" onclick="highlightMarker(18)">
+            <img src="https://storage.googleapis.com/glide-prod.appspot.com/uploads-v2/ePY4ewNcxH5kRKabw4Qb/pub/xzIQ7t09vZr350Na2Ynf.png" alt="蝶々" title="蝶々">
+            <p>蝶々</p>
+            <p>調査員: みう</p>
+        </div>
+    
+        <div class="image-container" id="image-19" onclick="highlightMarker(19)">
+            <img src="https://storage.googleapis.com/glide-prod.appspot.com/uploads-v2/ePY4ewNcxH5kRKabw4Qb/pub/GNgooibVZIBRLNg3kY6t.jpg" alt="黒い蝶々" title="黒い蝶々">
+            <p>黒い蝶々</p>
+            <p>調査員: みう</p>
+        </div>
+    
+        <div class="image-container" id="image-20" onclick="highlightMarker(20)">
+            <img src="https://storage.googleapis.com/glide-prod.appspot.com/uploads-v2/ePY4ewNcxH5kRKabw4Qb/pub/zpc0aDsYsBqQjqDqV6xf.png" alt="クモ" title="クモ">
+            <p>クモ</p>
+            <p>調査員: サエ</p>
+        </div>
+    
+        <div class="image-container" id="image-21" onclick="highlightMarker(21)">
+            <img src="https://storage.googleapis.com/glide-prod.appspot.com/uploads-v2/ePY4ewNcxH5kRKabw4Qb/pub/WGPTWbEi7cl7ZmjWFjdF.jpeg" alt="トノサマガエル" title="トノサマガエル">
+            <p>トノサマガエル</p>
+            <p>調査員: もち</p>
+        </div>
+    
+        <div class="image-container" id="image-22" onclick="highlightMarker(22)">
+            <img src="https://storage.googleapis.com/glide-prod.appspot.com/uploads-v2/ePY4ewNcxH5kRKabw4Qb/pub/fl7v9vqvR8P00u3QDrqx.png" alt="イナゴ" title="イナゴ">
+            <p>イナゴ</p>
+            <p>調査員: にし</p>
+        </div>
+    
+        <div class="image-container" id="image-23" onclick="highlightMarker(23)">
+            <img src="https://storage.googleapis.com/glide-prod.appspot.com/uploads-v2/ePY4ewNcxH5kRKabw4Qb/pub/NKrR0mth0VriuxQFEPNW.png" alt="コオイムシ" title="コオイムシ">
+            <p>コオイムシ</p>
+            <p>調査員: やま</p>
+        </div>
+    
+        <div class="image-container" id="image-24" onclick="highlightMarker(24)">
+            <img src="https://storage.googleapis.com/glide-prod.appspot.com/uploads-v2/ePY4ewNcxH5kRKabw4Qb/pub/EKfzdbdG1SdJe6EX3VC7.png" alt="オンブバッタ" title="オンブバッタ">
+            <p>オンブバッタ</p>
+            <p>調査員: にし</p>
+        </div>
+    
+        <div class="image-container" id="image-25" onclick="highlightMarker(25)">
+            <img src="https://storage.googleapis.com/glide-prod.appspot.com/uploads-v2/ePY4ewNcxH5kRKabw4Qb/pub/fRDwteQ5t01bSR6y8NjZ.png" alt="ナナホシテントウ" title="ナナホシテントウ">
+            <p>ナナホシテントウ</p>
+            <p>調査員: やま</p>
+        </div>
+    
+    </div>
+
+    <!-- Leaflet JS and Map Initialization -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        const map = L.map('map').setView([35.7105, 138.527], 15);
+        const markers = [];
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            maxZoom: 19
+        }).addTo(map);
+
+        const marker0 = L.marker([35.7002173, 138.5211637]).addTo(map);
+        marker0.bindPopup("Location: 1<br>Name: ニホンアマガエル<br>調査員: アコニチン");
+        marker0.on('click', function() {
+            document.querySelectorAll('.image-container').forEach(img => img.classList.remove('selected'));
+            document.getElementById('image-0').classList.add('selected');
+        });
+        markers.push(marker0);
+    
+        const marker1 = L.marker([35.7104725, 138.5277451]).addTo(map);
+        marker1.bindPopup("Location: 2<br>Name: ニホンカナヘビ<br>調査員: アコニチン");
+        marker1.on('click', function() {
+            document.querySelectorAll('.image-container').forEach(img => img.classList.remove('selected'));
+            document.getElementById('image-1').classList.add('selected');
+        });
+        markers.push(marker1);
+    
+        const marker2 = L.marker([35.7116577, 138.5241356]).addTo(map);
+        marker2.bindPopup("Location: 3<br>Name: トノサマガエル<br>調査員: アコニチン");
+        marker2.on('click', function() {
+            document.querySelectorAll('.image-container').forEach(img => img.classList.remove('selected'));
+            document.getElementById('image-2').classList.add('selected');
+        });
+        markers.push(marker2);
+    
+        const marker3 = L.marker([35.71070719513642, 138.52784992208566]).addTo(map);
+        marker3.bindPopup("Location: 4<br>Name: イナゴ<br>調査員: サエ");
+        marker3.on('click', function() {
+            document.querySelectorAll('.image-container').forEach(img => img.classList.remove('selected'));
+            document.getElementById('image-3').classList.add('selected');
+        });
+        markers.push(marker3);
+    
+        const marker4 = L.marker([35.71104920036768, 138.52411333343062]).addTo(map);
+        marker4.bindPopup("Location: 5<br>Name: キセイバチ<br>調査員: シンカイ");
+        marker4.on('click', function() {
+            document.querySelectorAll('.image-container').forEach(img => img.classList.remove('selected'));
+            document.getElementById('image-4').classList.add('selected');
+        });
+        markers.push(marker4);
+    
+        const marker5 = L.marker([35.71043480405471, 138.5277102844097]).addTo(map);
+        marker5.bindPopup("Location: 6<br>Name: マダラバッタ<br>調査員: みう");
+        marker5.on('click', function() {
+            document.querySelectorAll('.image-container').forEach(img => img.classList.remove('selected'));
+            document.getElementById('image-5').classList.add('selected');
+        });
+        markers.push(marker5);
+    
+        const marker6 = L.marker([35.71055606942224, 138.52768865426864]).addTo(map);
+        marker6.bindPopup("Location: 7<br>Name: キセイバチ<br>調査員: もち");
+        marker6.on('click', function() {
+            document.querySelectorAll('.image-container').forEach(img => img.classList.remove('selected'));
+            document.getElementById('image-6').classList.add('selected');
+        });
+        markers.push(marker6);
+    
+        const marker7 = L.marker([35.71163749151726, 138.52417171988967]).addTo(map);
+        marker7.bindPopup("Location: 8<br>Name: ニホンアマガエル<br>調査員: ゆい");
+        marker7.on('click', function() {
+            document.querySelectorAll('.image-container').forEach(img => img.classList.remove('selected'));
+            document.getElementById('image-7').classList.add('selected');
+        });
+        markers.push(marker7);
+    
+        const marker8 = L.marker([35.711085223226014, 138.5242718834212]).addTo(map);
+        marker8.bindPopup("Location: 9<br>Name: ヨコバイ<br>調査員: シンカイ");
+        marker8.on('click', function() {
+            document.querySelectorAll('.image-container').forEach(img => img.classList.remove('selected'));
+            document.getElementById('image-8').classList.add('selected');
+        });
+        markers.push(marker8);
+    
+        const marker9 = L.marker([35.71043480405471, 138.5277102844111]).addTo(map);
+        marker9.bindPopup("Location: 10<br>Name: マダラバッタ<br>調査員: たいどう");
+        marker9.on('click', function() {
+            document.querySelectorAll('.image-container').forEach(img => img.classList.remove('selected'));
+            document.getElementById('image-9').classList.add('selected');
+        });
+        markers.push(marker9);
+    
+        const marker10 = L.marker([35.71109364372113, 138.52423832374902]).addTo(map);
+        marker10.bindPopup("Location: 11<br>Name: コオロギ<br>調査員: もち");
+        marker10.on('click', function() {
+            document.querySelectorAll('.image-container').forEach(img => img.classList.remove('selected'));
+            document.getElementById('image-10').classList.add('selected');
+        });
+        markers.push(marker10);
+    
+        const marker11 = L.marker([35.71110747758759, 138.52423555123417]).addTo(map);
+        marker11.bindPopup("Location: 12<br>Name: コオロギ<br>調査員: ゆい");
+        marker11.on('click', function() {
+            document.querySelectorAll('.image-container').forEach(img => img.classList.remove('selected'));
+            document.getElementById('image-11').classList.add('selected');
+        });
+        markers.push(marker11);
+    
+        const marker12 = L.marker([35.71104920036768, 138.52411333343062]).addTo(map);
+        marker12.bindPopup("Location: 13<br>Name: マダラバッタ<br>調査員: シンカイ");
+        marker12.on('click', function() {
+            document.querySelectorAll('.image-container').forEach(img => img.classList.remove('selected'));
+            document.getElementById('image-12').classList.add('selected');
+        });
+        markers.push(marker12);
+    
+        const marker13 = L.marker([35.71108297504761, 138.5242475227862]).addTo(map);
+        marker13.bindPopup("Location: 14<br>Name: キリギリス<br>調査員: シンカイ");
+        marker13.on('click', function() {
+            document.querySelectorAll('.image-container').forEach(img => img.classList.remove('selected'));
+            document.getElementById('image-13').classList.add('selected');
+        });
+        markers.push(marker13);
+    
+        const marker14 = L.marker([35.71055606942224, 138.52768865426864]).addTo(map);
+        marker14.bindPopup("Location: 15<br>Name: バッタ<br>調査員: もち");
+        marker14.on('click', function() {
+            document.querySelectorAll('.image-container').forEach(img => img.classList.remove('selected'));
+            document.getElementById('image-14').classList.add('selected');
+        });
+        markers.push(marker14);
+    
+        const marker15 = L.marker([35.71104920036768, 138.52411333343062]).addTo(map);
+        marker15.bindPopup("Location: 16<br>Name: ニホンアマガエル<br>調査員: シンカイ");
+        marker15.on('click', function() {
+            document.querySelectorAll('.image-container').forEach(img => img.classList.remove('selected'));
+            document.getElementById('image-15').classList.add('selected');
+        });
+        markers.push(marker15);
+    
+        const marker16 = L.marker([35.7119678, 138.5245789]).addTo(map);
+        marker16.bindPopup("Location: 17<br>Name: イナゴ<br>調査員: そら");
+        marker16.on('click', function() {
+            document.querySelectorAll('.image-container').forEach(img => img.classList.remove('selected'));
+            document.getElementById('image-16').classList.add('selected');
+        });
+        markers.push(marker16);
+    
+        const marker17 = L.marker([35.71043480405471, 138.5277102844397]).addTo(map);
+        marker17.bindPopup("Location: 18<br>Name: 蜘蛛<br>調査員: たいどう");
+        marker17.on('click', function() {
+            document.querySelectorAll('.image-container').forEach(img => img.classList.remove('selected'));
+            document.getElementById('image-17').classList.add('selected');
+        });
+        markers.push(marker17);
+    
+        const marker18 = L.marker([35.710776248618735, 138.5279712995181]).addTo(map);
+        marker18.bindPopup("Location: 19<br>Name: 蝶々<br>調査員: みう");
+        marker18.on('click', function() {
+            document.querySelectorAll('.image-container').forEach(img => img.classList.remove('selected'));
+            document.getElementById('image-18').classList.add('selected');
+        });
+        markers.push(marker18);
+    
+        const marker19 = L.marker([35.710768225875455, 138.527974863053]).addTo(map);
+        marker19.bindPopup("Location: 20<br>Name: 黒い蝶々<br>調査員: みう");
+        marker19.on('click', function() {
+            document.querySelectorAll('.image-container').forEach(img => img.classList.remove('selected'));
+            document.getElementById('image-19').classList.add('selected');
+        });
+        markers.push(marker19);
+    
+        const marker20 = L.marker([35.71108331826567, 138.52423727064505]).addTo(map);
+        marker20.bindPopup("Location: 21<br>Name: クモ<br>調査員: サエ");
+        marker20.on('click', function() {
+            document.querySelectorAll('.image-container').forEach(img => img.classList.remove('selected'));
+            document.getElementById('image-20').classList.add('selected');
+        });
+        markers.push(marker20);
+    
+        const marker21 = L.marker([35.71109203847961, 138.52423150957424]).addTo(map);
+        marker21.bindPopup("Location: 22<br>Name: トノサマガエル<br>調査員: もち");
+        marker21.on('click', function() {
+            document.querySelectorAll('.image-container').forEach(img => img.classList.remove('selected'));
+            document.getElementById('image-21').classList.add('selected');
+        });
+        markers.push(marker21);
+    
+        const marker22 = L.marker([35.710386,  138.527703]).addTo(map);
+        marker22.bindPopup("Location: 23<br>Name: イナゴ<br>調査員: にし");
+        marker22.on('click', function() {
+            document.querySelectorAll('.image-container').forEach(img => img.classList.remove('selected'));
+            document.getElementById('image-22').classList.add('selected');
+        });
+        markers.push(marker22);
+    
+        const marker23 = L.marker([35.710386,  138.527703]).addTo(map);
+        marker23.bindPopup("Location: 24<br>Name: コオイムシ<br>調査員: やま");
+        marker23.on('click', function() {
+            document.querySelectorAll('.image-container').forEach(img => img.classList.remove('selected'));
+            document.getElementById('image-23').classList.add('selected');
+        });
+        markers.push(marker23);
+    
+        const marker24 = L.marker([35.710386,  138.527703]).addTo(map);
+        marker24.bindPopup("Location: 25<br>Name: オンブバッタ<br>調査員: にし");
+        marker24.on('click', function() {
+            document.querySelectorAll('.image-container').forEach(img => img.classList.remove('selected'));
+            document.getElementById('image-24').classList.add('selected');
+        });
+        markers.push(marker24);
+    
+        const marker25 = L.marker([35.710386,  138.527703]).addTo(map);
+        marker25.bindPopup("Location: 26<br>Name: ナナホシテントウ<br>調査員: やま");
+        marker25.on('click', function() {
+            document.querySelectorAll('.image-container').forEach(img => img.classList.remove('selected'));
+            document.getElementById('image-25').classList.add('selected');
+        });
+        markers.push(marker25);
+    
+        function highlightMarker(index) {
+            document.querySelectorAll('.image-container').forEach(img => img.classList.remove('selected'));
+            document.getElementById('image-' + index).classList.add('selected');
+            markers[index].openPopup();
+        }
+    </script>
+</body>
+</html>

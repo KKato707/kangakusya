@@ -46,6 +46,9 @@
   });
 </script>
 
+<!-- 画像ファイル閲覧用 -->
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  
 <!-- Hero Section -->
 <header class="relative bg-cover bg-center h-screen" style="background-image: url('background1.jpg');">
     <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-white/80 text-center px-4">
@@ -63,19 +66,44 @@
     <div class="bg-white rounded-lg shadow">
       <div class="p-5 text-center">
         <h3 class="font-semibold text-xl">ゼロカーボンファイヤ</h3>
-        <p class="mb-4"><br>
+        <p class="mb-4">
           「火×落葉落枝×エネルギー教育」の大学モデル<br>
           脱炭素をエネルギー消費の削減から達成することを目指しています
         </p>
-        <!-- PDF埋め込み部分 -->
-        <div class="mt-8 flex justify-center">
- 　　　 <embed src="zerocarbon.pdf" type="application/pdf" class="w-full max-w-3xl h-[600px] border rounded shadow" />
-　　　　</div>
+
+        <!-- 写真スライダー部分 -->
+        <div x-data="{
+          images: [
+            'zerocarbon/image1.jpg',
+            'zerocarbon/image2.jpg',
+            'zerocarbon/image3.jpg',
+            'zerocarbon/image4.jpg',
+            'zerocarbon/image5.jpg',
+            'zerocarbon/image6.jpg',
+            'zerocarbon/image7.jpg',
+            'zerocarbon/image8.jpg'
+          ],
+          current: 0
+        }" class="relative w-full max-w-3xl mx-auto mt-8">
+          <img :src="images[current]" alt="スライド画像" class="w-full rounded-lg shadow">
+
+          <!-- 左矢印 -->
+          <button @click="current = (current === 0) ? images.length - 1 : current - 1"
+                  class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/70 hover:bg-white rounded-full p-2 shadow">
+            ◀
+          </button>
+
+          <!-- 右矢印 -->
+          <button @click="current = (current === images.length - 1) ? 0 : current + 1"
+                  class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/70 hover:bg-white rounded-full p-2 shadow">
+            ▶
+          </button>
+        </div>
+        
       </div>
     </div>
   </div>
 </section>
-
 
 <!-- Act2 棚田-->
 <section id="act2" class="py-16 px-6 bg-cover bg-center bg-fixed bg-white/50 bg-blend-overlay"

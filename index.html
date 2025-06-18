@@ -61,46 +61,50 @@
 <!-- Act1 バイオマス -->
 <section id="act1" class="py-16 px-6 bg-cover bg-center bg-fixed bg-white/50 bg-blend-overlay"
   style="background-image: url('background1.jpg');">
-  <div class="max-w-5xl mx-auto text-center bg-white/80 p-8 rounded-lg shadow">
+  <div class="max-w-6xl mx-auto text-center bg-white/80 p-8 rounded-lg shadow">
     <h2 class="text-3xl font-bold mb-8">火に関する活動</h2>
-    <div class="bg-white rounded-lg shadow">
-      <div class="p-5 text-center">
-        <h3 class="font-semibold text-xl">ゼロカーボンファイヤ</h3>
-        <p class="mb-4">
-          「火×落葉落枝×エネルギー教育」の大学モデル<br>
-          脱炭素をエネルギー消費の削減から達成することを目指しています
-        </p>
-
-        <!-- 写真スライダー部分 -->
-        <div x-data="{
-          images: [
-            'zerocarbon/image1.jpg',
-            'zerocarbon/image2.jpg',
-            'zerocarbon/image3.jpg',
-            'zerocarbon/image4.jpg',
-            'zerocarbon/image5.jpg',
-            'zerocarbon/image6.jpg',
-            'zerocarbon/image7.jpg',
-            'zerocarbon/image8.jpg'
-          ],
-          current: 0
-        }" class="relative w-full max-w-3xl mx-auto mt-8">
-          <img :src="images[current]" alt="スライド画像" class="w-full rounded-lg shadow">
-
-          <!-- 左矢印 -->
+    <div class="grid md:grid-cols-2 gap-6">
+      
+      <!-- 左側のスライダー -->
+      <div x-data="{
+        images: [
+          'zerocarbon/image1.jpg',
+        ],
+        current: 0
+      }" class="relative bg-white rounded-lg shadow p-4">
+        <h3 class="text-xl font-semibold mb-2">ゼロカーボンファイヤモデルとは</h3>
+        <img :src="images[current]" alt="画像1" class="w-full rounded-lg shadow mb-2">
+        <div class="flex justify-between">
           <button @click="current = (current === 0) ? images.length - 1 : current - 1"
-                  class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/70 hover:bg-white rounded-full p-2 shadow">
-            ◀
-          </button>
-
-          <!-- 右矢印 -->
+                  class="text-xl bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded">◀</button>
           <button @click="current = (current === images.length - 1) ? 0 : current + 1"
-                  class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/70 hover:bg-white rounded-full p-2 shadow">
-            ▶
-          </button>
+                  class="text-xl bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded">▶</button>
         </div>
-        
       </div>
+
+      <!-- 右側のスライダー -->
+      <div x-data="{
+        images: [
+          'zerocarbon2/image2.jpg',
+          'zerocarbon2/image3.jpg'
+        'zerocarbon2/image4.jpg',
+        'zerocarbon2/image5.jpg',
+        'zerocarbon2/image6.jpg',
+        'zerocarbon2/image7.jpg',
+        'zerocarbon2/image8.jpg'
+        ],
+        current: 0
+      }" class="relative bg-white rounded-lg shadow p-4">
+        <h3 class="text-xl font-semibold mb-2">エネルギー教育の実践例</h3>
+        <img :src="images[current]" alt="画像2" class="w-full rounded-lg shadow mb-2">
+        <div class="flex justify-between">
+          <button @click="current = (current === 0) ? images.length - 1 : current - 1"
+                  class="text-xl bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded">◀</button>
+          <button @click="current = (current === images.length - 1) ? 0 : current + 1"
+                  class="text-xl bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded">▶</button>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>

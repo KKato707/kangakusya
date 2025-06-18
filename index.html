@@ -49,14 +49,6 @@
 <!-- 画像ファイル閲覧用 -->
 <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
-<!-- 更新日表示 -->
-<script>
-  const lastUpdated = new Date(document.lastModified);
-  document.getElementById("last-updated").textContent =
-    `${lastUpdated.getFullYear()}年${lastUpdated.getMonth() + 1}月${lastUpdated.getDate()}日`;
-</script>
-
-
   
 <!-- Hero Section -->
 <header class="relative bg-cover bg-center h-screen" style="background-image: url('background1.jpg');">
@@ -67,8 +59,15 @@
     </div>
   </header>
 
-<!-- 更新日 -->
-<p class="text-sm text-gray-500 mt-2 text-left"> update: <span id="last-updated"></span></p>
+<!-- 更新日表示 -->
+<div class="text-center py-4 text-sm text-gray-600 bg-gray-100">
+  last updated: <span id="last-updated"></span>
+</div>
+<script>
+  const today = new Date();
+  const updated = `${today.getFullYear()}/${today.getMonth()+1}/${today.getDate()}`;
+  document.getElementById('last-updated').textContent = updated;
+</script>
 
 <!-- Act1 バイオマス -->
 <section id="act1" class="py-16 px-6 bg-cover bg-center bg-fixed bg-white/50 bg-blend-overlay"

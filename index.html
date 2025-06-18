@@ -59,14 +59,28 @@
     </div>
   </header>
 
-<!-- 更新日表示 -->
-<div class="text-center py-4 text-sm text-gray-600 bg-gray-100">
-  last updated: <span id="last-updated"></span>
+<!-- 更新日とPV表示を横並び -->
+<div class="flex justify-center space-x-8 py-4 text-sm text-gray-600 bg-gray-100">
+  <div>last updated: <span id="last-updated"></span></div>
+  <div>pv count: <span id="page-view-count"></span></div> 
 </div>
+
 <script>
+  // 更新日表示
   const today = new Date();
-  const updated = `${today.getFullYear()}/${today.getMonth()+1}/${today.getDate()}`;
+  const updated = ${today.getFullYear()}/${today.getMonth()+1}/${today.getDate()};
   document.getElementById('last-updated').textContent = updated;
+  // PV数表示
+  const apiUrl = 'https://counterapi.com/api/v1/increment?website=kkato707.github.io&page=/kangakusya/';
+  fetch(apiUrl)
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById('page-view-count').textContent = data.count;
+    })
+    .catch(err => {
+      document.getElementById('page-view-count').textContent = '取得失敗';
+      console.error(err);
+    });
 </script>
 
 <!-- Act1 バイオマス -->

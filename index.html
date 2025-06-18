@@ -48,6 +48,15 @@
 
 <!-- 画像ファイル閲覧用 -->
 <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+<!-- 更新日表示 -->
+<script>
+  const lastUpdated = new Date(document.lastModified);
+  document.getElementById("last-updated").textContent =
+    `${lastUpdated.getFullYear()}年${lastUpdated.getMonth() + 1}月${lastUpdated.getDate()}日`;
+</script>
+
+
   
 <!-- Hero Section -->
 <header class="relative bg-cover bg-center h-screen" style="background-image: url('background1.jpg');">
@@ -57,6 +66,9 @@
       <a href="#act1" class="bg-green-500 hover:bg-green-600 text-white px-6 py-4 rounded-full shadow-lg transition text-xl">活動を知る</a>
     </div>
   </header>
+
+<!-- 更新日 -->
+<p class="text-sm text-gray-500 mt-2 text-left"> update: <span id="last-updated"></span></p>
 
 <!-- Act1 バイオマス -->
 <section id="act1" class="py-16 px-6 bg-cover bg-center bg-fixed bg-white/50 bg-blend-overlay"
@@ -115,7 +127,7 @@
   style="background-image: url('background1.jpg');">
   <div class="max-w-5xl mx-auto text-center bg-white/80 p-8 rounded-lg shadow">
     <h2 class="text-3xl font-bold mb-8">棚田に関する活動</h2>
-    <p class="mb-4">以下は甲府第一高校と協賛で実施した調査結果です</p>
+    <p class="mb-5">山梨県甲斐市にある御領棚田にて甲府第一高校と協賛で実施した調査結果です</p>
     <div class="overflow-hidden rounded-lg shadow-lg">
       <iframe id="inline-frame"
         width="100%"
@@ -168,15 +180,14 @@
  </section>
 
 
-
 <!-- 問い合わせフォーム -->
 <div id="contact" class="py-16 px-6 bg-cover bg-center bg-fixed bg-white/50 bg-blend-overlay"
   style="background-image: url('background1.jpg');">
   <div class="max-w-5xl mx-auto text-center bg-white/80 p-8 rounded-lg shadow">
   <h2 class="text-3xl font-bold mb-8">お問い合わせ</h2>
-  <h2 class="text-1xl font-bold mb-8">なんでもお問い合わせください</h2>
+  <h2 class="text-1xl font-bold mb-8">ご興味あればお問い合わせください</h2>
   <form method="POST" action="https://formsubmit.co/kk0908ev@gmail.com" class="space-y-4">
-    <input type="text" name="name" required placeholder="お名前" class="w-full p-3 border rounded" />
+    <input type="text" name="name" required placeholder="お名前（ニックネームでも）" class="w-full p-3 border rounded" />
     <input type="email" name="email" required placeholder="メールアドレス" class="w-full p-3 border rounded" />
     <select name="topic" required class="w-full p-3 border rounded">
       <option value="">お問い合わせ内容を選択</option>
@@ -190,11 +201,31 @@
   </form>
   </div>
 </div>
-  
+
 <!-- Footer -->
   <footer class="text-center py-6 bg-gray-800 text-white">
     <p>&copy; 2025 環境楽者（かんきょうがくしゃ） All rights reserved.</p>
   </footer>
+
+<!-- トップに戻るボタン -->
+<button id="toTopBtn" title="トップに戻る"
+  class="fixed bottom-6 right-6 bg-gray-700 text-white px-3 py-2 rounded-full shadow-lg hover:bg-gray-900 transition-opacity opacity-0 pointer-events-none z-50">
+  ▲
+</button>
+<script>
+  const toTopBtn = document.getElementById("toTopBtn");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      toTopBtn.classList.remove("opacity-0", "pointer-events-none");
+    } else {
+      toTopBtn.classList.add("opacity-0", "pointer-events-none");
+    }
+  });
+  toTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+</script>
+
 
 </body>
 </html>

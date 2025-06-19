@@ -139,7 +139,7 @@
 
   <p style="text-align: center; font-size: 1.5rem; color: #555; margin: 1rem;">調査専用webアプリを用いて<br>スマホで調査を実施しました。</p>
 
-<!-- 埋め込みリンクカード（修正版） -->
+<!-- 埋め込みリンクカード-->
 <div class="embed-card">
   <a href="https://goryotanadabiomap.glide.page" target="_blank" rel="noopener noreferrer" class="embed-link">
     <div class="embed-content">
@@ -151,7 +151,7 @@
         <div class="url">https://goryotanadabiomap.glide.page</div>
       </div>
       <div class="embed-image">
-        <img src="webapp.png" alt="Webアプリ画像" />
+        <img src="webapp.png" alt="Webアプリ画像" class="w-full max-w-xs sm:max-w-sm md:max-w-md h-auto" />
       </div>
     </div>
   </a>
@@ -330,8 +330,8 @@
         const map = L.map('map').setView([35.7105, 138.527], 15);
         const markers = [];
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        L.tileLayer(''http://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+      attribution: 'Google',
             maxZoom: 19
         }).addTo(map);
 

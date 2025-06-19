@@ -52,12 +52,30 @@
   
 <!-- Hero Section -->
 <header class="relative bg-cover bg-center h-screen" style="background-image: url('background1.jpg');">
-    <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-white/80 text-center px-4">
-       <h1 class="text-[7rem] md:text-[5rem] font-bold mb-6 leading-tight">環境<br>楽社</h1>
-      <p class="text-2xl md:text-3xl mb-8">火、棚田、雑草を対象に活動中</p>
-      <a href="#act1" class="bg-green-500 hover:bg-green-600 text-white px-6 py-4 rounded-full shadow-lg transition text-xl">活動を知る</a>
+  <!-- オーバーレイ -->
+  <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-white/80 px-8">
+    <!-- メイン横並びコンテナ -->
+    <div class="w-full flex items-center justify-between max-w-7xl mx-auto">
+      <!-- 左：タイトル -->
+      <div class="text-center">
+        <h1 class="text-[3rem] md:text-[5rem] font-bold leading-tight">
+          環境<br>楽社
+        </h1>
+      </div>
+
+      <!-- 右：説明文 -->
+      <div class="text-center text-xl tracking-wider leading-relaxed" style="margin-top: 0; margin-bottom: 0; line-height: 1.3;">
+        火、雑草を対象に活動中
+      </div>
     </div>
-  </header>
+  </div>
+  <!-- ボタン -->
+  <div class="absolute bottom-[9%] left-1/2 transform -translate-x-1/2 text-center">
+    <a href="#act1" class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-full shadow-lg transition text-lg">
+      活動を知る
+    </a>
+  </div>
+</header>
 
 <!-- 更新日とPV表示を横並び -->
 <div class="flex justify-center space-x-8 py-4 text-sm text-gray-600 bg-gray-100">

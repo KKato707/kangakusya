@@ -270,16 +270,26 @@
   </div>
 </div>
 
-<!-- コメントセクション追加 -->
-<div id="comments" class="max-w-4xl mx-auto px-4 py-8 bg-white/90 rounded-lg shadow">
-  <h2 class="text-2xl font-bold mb-4">コメントをどうぞ</h2>
-  <div id="disqus_thread"></div>
-</div>
+ <!-- コメントセクション -->
+  <div id="disqus_thread" class="mt-10 max-w-4xl mx-auto bg-white p-6 rounded shadow-lg"></div>
+</section>
 
-<!-- Disqus埋め込みコード -->
-<script id="dsq-count-scr" src="//https-kkato707-github-io-kangakusya-intro.disqus.com/count.js" async></script>
-<noscript>コメント機能を利用するにはJavaScriptを有効にしてください。</noscript>
-
+<!-- Disqusスクリプト -->
+<script>
+  /*
+  var disqus_config = function () {
+    this.page.url = window.location.href;  // 現在のページURL
+    this.page.identifier = window.location.pathname; // ページごとの識別子
+  };
+  */
+  (function () {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://https-kkato707-github-io-kangakusya-intro.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>コメント機能を見るには、JavaScriptを有効にしてください。<a href="https://disqus.com/?ref_noscript">Disqus</a></noscript>
   
 <!-- Footer -->
   <footer class="text-center py-6 bg-gray-800 text-white">

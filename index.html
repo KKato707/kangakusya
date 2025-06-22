@@ -175,7 +175,7 @@
 <!-- Act2 棚田-->
 <section id="act2" class="py-16 px-6 bg-cover bg-center bg-fixed bg-white/50 bg-blend-overlay"
   style="background-image: url('background1.jpg');">
-  <div class="max-w-5xl mx-auto text-center bg-white/80 p-8 rounded-lg shadow">
+  <div class="max-w-6xl mx-auto text-center bg-white/80 p-8 rounded-lg shadow">
     <h2 class="text-3xl font-bold mb-8">棚田に関する活動</h2>
     <p class="mb-5">山梨県甲斐市にある御領棚田にて甲府第一高校と協賛で実施した調査結果です。<br>webアプリやマップ表示は他にも応用可能ですので、ご興味あればフォームよりご連絡ください。</p>
     <div class="overflow-hidden rounded-lg shadow-lg">
@@ -192,10 +192,10 @@
   </div>
 </section>
 
-  <!-- Act3 雑草農法-->
+<!-- Act3 雑草農法-->
 <section id="act3" class="py-16 px-6 bg-cover bg-center bg-fixed bg-white/50 bg-blend-overlay"
   style="background-image: url('background1.jpg');">
-  <div class="max-w-5xl mx-auto text-center bg-white/80 p-8 rounded-lg shadow">
+  <div class="max-w-6xl mx-auto text-center bg-white/80 p-8 rounded-lg shadow">
       <h2 class="text-3xl font-bold mb-8">アヒル雑草農法</h2>
           <div class="p-4 text-center">
             <h3 class="font-semibold text-xl">｜coming soon｜</h3>
@@ -207,7 +207,7 @@
 <section id="SNS"
   class="py-16 px-6 bg-cover bg-center bg-fixed bg-white/50 bg-blend-overlay"
   style="background-image: url('background1.jpg');">
-  <div class="max-w-5xl mx-auto text-center bg-white/80 p-8 rounded-lg shadow">
+  <div class="max-w-6xl mx-auto text-center bg-white/80 p-8 rounded-lg shadow">
   <h2 class="text-3xl font-bold mb-8">最近の様子（coming soon...）</h2>
     <p class="mb-6">ツイート</p>
     <div class="mb-6">
@@ -229,23 +229,37 @@
     </div>
  </section>
 
+<!-- SI Selfintroduction-->
+<section id="intro" class="py-16 px-6 bg-cover bg-center bg-fixed bg-white/50 bg-blend-overlay"
+  style="background-image: url('background1.jpg');">
+  <div class="max-w-6xl mx-auto text-center bg-white/80 p-8 rounded-lg shadow">
+      <h2 class="text-3xl font-bold mb-8">我々について</h2>
+          <div class="p-4 text-center">
+            <h3 class="font-semibold text-xl">30歳前後の男3人のグループです。各々、拠点は茨城や山梨などバラバラです。<br>
+            管理者は環境経済を専門に農や食の循環を研究しています。<br>
+              1人は生命工学を専門に藻類をはじめバイオマス関連を研究しています。<br>
+              もう1人は今は企業で働いています。</h3>
+          </div>
+        </div>
+  </section>
+
 
 <!-- 問い合わせフォーム -->
 <div id="contact" class="py-16 px-6 bg-cover bg-center bg-fixed bg-white/50 bg-blend-overlay"
   style="background-image: url('background1.jpg');">
-  <div class="max-w-5xl mx-auto text-center bg-white/80 p-8 rounded-lg shadow">
+  <div class="max-w-4xl mx-auto text-center bg-white/80 p-8 rounded-lg shadow">
   <h2 class="text-3xl font-bold mb-8">お問い合わせ</h2>
   <h2 class="text-1xl font-bold mb-8">ご興味あればお問い合わせください</h2>
   <form method="POST" action="https://formsubmit.co/kk0908ev@gmail.com" class="space-y-4">
-    <input type="text" name="name" required placeholder="お名前（ニックネームでも）" class="w-full p-3 border rounded" />
-    <input type="email" name="email" required placeholder="メールアドレス" class="w-full p-3 border rounded" />
     <select name="topic" required class="w-full p-3 border rounded">
       <option value="">お問い合わせ内容を選択</option>
-      <option value="バイオマス">バイオマスに関して</option>
-      <option value="雑草農法">雑草農法に関して</option>
+      <option value="バイオマス">火に関して</option>
       <option value="棚田">棚田に関して</option>
+      <option value="雑草農法">雑草農法に関して</option>
       <option value="その他">その他</option>
     </select>
+    <input type="text" name="name" required placeholder="お名前（ニックネームでも）" class="w-full p-3 border rounded" />
+    <input type="email" name="email" required placeholder="メールアドレス" class="w-full p-3 border rounded" />
     <textarea name="message" required placeholder="ご希望内容や質問をご記入ください" class="w-full p-3 border rounded h-32"></textarea>
     <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded transition">送信する</button>
   </form>

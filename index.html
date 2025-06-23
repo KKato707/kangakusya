@@ -273,9 +273,8 @@
   </div>
 </div>
 
-
 <!-- コメントセクション -->
-<div id="contact" class="py-16 px-6 bg-cover bg-center bg-fixed bg-white/50 bg-blend-overlay"
+<div id="comments" class="py-16 px-6 bg-cover bg-center bg-fixed bg-white/50 bg-blend-overlay"
   style="background-image: url('background1.jpg');">
   <div class="max-w-4xl mx-auto text-center bg-white/80 p-8 rounded-lg shadow">
     <!-- コメント入力 -->
@@ -294,7 +293,7 @@
     </form>
     <iframe onload='if(submitted){window.location="";}' id="hidden_iframe" name="hidden_iframe" style="display:none;"></iframe>
     <script type="text/javascript">
-      var NGComments = ["死ね", "バカ", ".exe"];
+      var NGComments = ["死", "バカ", "アホ", ".exe"];
       var regex = new RegExp(NGComments.join("|"));
       function test(wcheck) {
         if (wcheck.match(regex) != null) {
@@ -312,17 +311,24 @@
     <script>
       d3.csv("https://docs.google.com/spreadsheets/d/1ZHr3bm1D1QLav7APazBu7XLd7DwqiTnJHHwHiStY1Co/export?format=csv&range=A3:C",
         function (error, data) {
+          if (error) {
+            console.error("CSV読み込みエラー:", error);
+            return;
+          }
+
           data.reverse();
           function replaceText(text) {
-            return text.replace(/</g, "&lt;");
+            return text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
           }
+
           var text = "";
           for (var i = 0; i < data.length; i++) {
-            var name = replaceText(data[i].Name);
-            var timestamp = replaceText(data[i].Timestamp);
-            var comments = replaceText(data[i].Comments);
+            var name = replaceText(data[i]["Name"] || "名無し");
+            var timestamp = replaceText(data[i]["Timestamp"] || "");
+            var comments = replaceText(data[i]["Comments"] || "");
+
             text += `<div class="mb-4 border-b pb-2">
-                        <strong>${i + 1} 名前:</strong> <a href="mailto:${mail}" class="text-blue-600">${name}</a><br>
+                        <strong>${i + 1} 名前:</strong> ${name}<br>
                         <span class="text-xs text-gray-500">${timestamp}</span>
                         <pre class="whitespace-pre-wrap bg-gray-50 p-2 rounded mt-1">${comments}</pre>
                      </div>`;
@@ -332,6 +338,7 @@
     </script>
   </div>
 </div>
+
   
 <!-- Footer -->
   <footer class="text-center py-6 bg-gray-800 text-white">

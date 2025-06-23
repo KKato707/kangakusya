@@ -273,19 +273,53 @@
   </div>
 </div>
 
- <!-- コメントセクション -->
-  <div id="disqus_thread" class="mt-10 max-w-4xl mx-auto bg-white p-6 rounded shadow-lg"></div>
-</section>
-  <!-- Utterances コメント -->
-  <script src="https://utteranc.es/client.js"
-          repo="kkato707/kangakusya"
-          issue-term="pathname"
-          label="💬 コメント"
-          theme="github-light"
-          crossorigin="anonymous"
-          async>
-  </script>
-</section>
+
+<!-- コメントセクション -->
+　<!-- コメント入力 -->
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSdpd_MO4cvWVrISrjRSKRmjg0ShE2hfQ6QnuvWT0Ed1MuZXFg/formResponse" target="hidden_iframe" method="post" onsubmit="return test(this.wcheck.value)">
+<p><input name="entry.769394285" placeholder="名前" value="名無し" required></p>
+<p><textarea name="entry.1499394685" placeholder="コメント" rows="10" cols="40" maxlength="400" id="wcheck" required></textarea></p>
+<input type="submit" id="submitbutton" value="送信">
+</form>
+<iframe onload='if(submitted){window.location="";}' id=hidden_iframe name=hidden_iframe style=display:none></iframe>
+
+<script type="text/javascript">
+var NGComments = ["死ね","バカ",".exe"]; // 簡易的なNGワードの設定
+var regex = new RegExp(NGComments.join("|"));
+function test(wcheck) {
+	if (wcheck.match(regex) != null) {
+		alert("ERROR: コメントにNGワードが含まれています");
+		return false;
+	}
+	document.getElementById("submitbutton").disabled = true;
+	textareas = document.getElementsByTagName('textarea');
+	inputs = document.getElementsByTagName('input');
+	return submitted=!0;
+}
+</script>
+  <!-- コメント表示 -->
+<form action="https://docs.google.com/forms/d/e/1ZHr3bm1D1QLav7APazBu7XLd7DwqiTnJHHwHiStY1Co/formResponse" target="hidden_iframe" method="post" onsubmit="return test(this.wcheck.value)">
+<p><input name="entry.123456789" placeholder="名前" value="名無し" required></p>
+<p><input name="entry.123456789" placeholder="メールアドレス" type="email"></p>
+<p><textarea name="entry.123456789" placeholder="コメント" rows="10" cols="40" maxlength="400" id="wcheck" required></textarea></p>
+<input type="submit" id="submitbutton" value="送信">
+</form>
+<iframe onload='if(submitted){window.location="";}' id=hidden_iframe name=hidden_iframe style=display:none></iframe>
+
+<script type="text/javascript">
+var NGComments = ["死ね","バカ",".exe"]; // 簡易的なNGワードの設定
+var regex = new RegExp(NGComments.join("|"));
+function test(wcheck) {
+	if (wcheck.match(regex) != null) {
+		alert("ERROR: コメントにNGワードが含まれています");
+		return false;
+	}
+	document.getElementById("submitbutton").disabled = true;
+	textareas = document.getElementsByTagName('textarea');
+	inputs = document.getElementsByTagName('input');
+	return submitted=!0;
+}
+</script>
   
 <!-- Footer -->
   <footer class="text-center py-6 bg-gray-800 text-white">

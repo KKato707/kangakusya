@@ -20,14 +20,14 @@
       text-align: center;
       padding: 1.5rem 1rem;
       font-size: 1.8rem;
-      font-weight: 700;
+      font-weight: 600;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
     #map {
-      width: 80%;
-      height: 450px;
-      margin: 20px auto;
+      width: 60%;
+      height: 150px;
+      margin: 50px auto;
     }
 
     #images {
@@ -130,13 +130,13 @@
     }
 
     .url {
-      font-size: 13px;
+      font-size: 10px;
       color: #1a73e8;
     }
 
-    @media (max-width: 200px) {
+    @media (max-width: 100px) {
       header {
-        font-size: 1.3rem;
+        font-size: 1rem;
         padding: 1rem;
       }
 
@@ -150,9 +150,9 @@
       }
 
       .embed-image img {
-        width: 100%;
+        width: 80%;
         height: auto;
-        max-height: 200px; /* スマホで画像が縦に大きくなりすぎないように制限 */
+        max-height: 100px; /* スマホで画像が縦に大きくなりすぎないように制限 */
         object-fit: cover;
       }
     }
@@ -163,7 +163,7 @@
 
 <header>棚田の生物マップ　©2023環境楽社</header>
 
-<p style="text-align: center; font-size: 1.5rem; color: #555; margin: 1rem;">
+<p style="text-align: center; font-size: 1rem; color: #555; margin: 1rem;">
   調査専用webアプリを用いて<br>スマホで調査を実施しました。
 </p>
 
@@ -185,7 +185,7 @@
   </a>
 </div>
 
-    <p style="text-align: center; font-size: 1.5rem; color: #555; margin: 1rem;">調査後の公開マップ</p>
+    <p style="text-align: center; font-size: 1rem; color: #555; margin: 1rem;">調査後の公開マップ</p>
 
 <!-- Map container -->
 <div id="map"></div>

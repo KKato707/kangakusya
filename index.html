@@ -275,51 +275,64 @@
 
 
 <!-- コメントセクション -->
-　<!-- コメント入力 -->
-<form action="https://docs.google.com/forms/d/e/1FAIpQLSdpd_MO4cvWVrISrjRSKRmjg0ShE2hfQ6QnuvWT0Ed1MuZXFg/formResponse" target="hidden_iframe" method="post" onsubmit="return test(this.wcheck.value)">
-<p><input name="entry.769394285" placeholder="名前" value="名無し" required></p>
-<p><textarea name="entry.1499394685" placeholder="コメント" rows="10" cols="40" maxlength="400" id="wcheck" required></textarea></p>
-<input type="submit" id="submitbutton" value="送信">
-</form>
-<iframe onload='if(submitted){window.location="";}' id=hidden_iframe name=hidden_iframe style=display:none></iframe>
+<div id="contact" class="py-16 px-6 bg-cover bg-center bg-fixed bg-white/50 bg-blend-overlay"
+  style="background-image: url('background1.jpg');">
+  <div class="max-w-4xl mx-auto text-center bg-white/80 p-8 rounded-lg shadow">
+    <!-- コメント入力 -->
+    <form action="https://docs.google.com/forms/d/e/1FAIpQLSdpd_MO4cvWVrISrjRSKRmjg0ShE2hfQ6QnuvWT0Ed1MuZXFg/formResponse"
+          target="hidden_iframe" method="post" onsubmit="return test(this.wcheck.value)" class="space-y-4 text-left">
+      <p>
+        <input name="entry.769394285" placeholder="名前" value="名無し" required
+               class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-300">
+      </p>
+      <p>
+        <textarea name="entry.1499394685" placeholder="コメント" rows="10" maxlength="400" id="wcheck" required
+                  class="w-full px-4 py-2 border border-gray-300 rounded resize-y focus:outline-none focus:ring focus:border-blue-300"></textarea>
+      </p>
+      <input type="submit" id="submitbutton" value="送信"
+             class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-6 rounded cursor-pointer">
+    </form>
+    <iframe onload='if(submitted){window.location="";}' id="hidden_iframe" name="hidden_iframe" style="display:none;"></iframe>
+    <script type="text/javascript">
+      var NGComments = ["死ね", "バカ", ".exe"];
+      var regex = new RegExp(NGComments.join("|"));
+      function test(wcheck) {
+        if (wcheck.match(regex) != null) {
+          alert("ERROR: コメントにNGワードが含まれています");
+          return false;
+        }
+        document.getElementById("submitbutton").disabled = true;
+        return submitted = !0;
+      }
+    </script>
 
-<script type="text/javascript">
-var NGComments = ["死ね","バカ",".exe"]; // 簡易的なNGワードの設定
-var regex = new RegExp(NGComments.join("|"));
-function test(wcheck) {
-	if (wcheck.match(regex) != null) {
-		alert("ERROR: コメントにNGワードが含まれています");
-		return false;
-	}
-	document.getElementById("submitbutton").disabled = true;
-	textareas = document.getElementsByTagName('textarea');
-	inputs = document.getElementsByTagName('input');
-	return submitted=!0;
-}
-</script>
-  <!-- コメント表示 -->
-<form action="https://docs.google.com/forms/d/e/1ZHr3bm1D1QLav7APazBu7XLd7DwqiTnJHHwHiStY1Co/formResponse" target="hidden_iframe" method="post" onsubmit="return test(this.wcheck.value)">
-<p><input name="entry.123456789" placeholder="名前" value="名無し" required></p>
-<p><input name="entry.123456789" placeholder="メールアドレス" type="email"></p>
-<p><textarea name="entry.123456789" placeholder="コメント" rows="10" cols="40" maxlength="400" id="wcheck" required></textarea></p>
-<input type="submit" id="submitbutton" value="送信">
-</form>
-<iframe onload='if(submitted){window.location="";}' id=hidden_iframe name=hidden_iframe style=display:none></iframe>
-
-<script type="text/javascript">
-var NGComments = ["死ね","バカ",".exe"]; // 簡易的なNGワードの設定
-var regex = new RegExp(NGComments.join("|"));
-function test(wcheck) {
-	if (wcheck.match(regex) != null) {
-		alert("ERROR: コメントにNGワードが含まれています");
-		return false;
-	}
-	document.getElementById("submitbutton").disabled = true;
-	textareas = document.getElementsByTagName('textarea');
-	inputs = document.getElementsByTagName('input');
-	return submitted=!0;
-}
-</script>
+    <!-- コメント表示 -->
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <div id="comments" class="mt-10 text-left text-sm leading-relaxed"></div>
+    <script>
+      d3.csv("https://docs.google.com/spreadsheets/d/1ZHr3bm1D1QLav7APazBu7XLd7DwqiTnJHHwHiStY1Co/export?format=csv&range=A3:D",
+        function (error, data) {
+          data.reverse();
+          function replaceText(text) {
+            return text.replace(/</g, "&lt;");
+          }
+          var text = "";
+          for (var i = 0; i < data.length; i++) {
+            var name = replaceText(data[i].Name);
+            var mail = replaceText(data[i].Mail);
+            var timestamp = replaceText(data[i].Timestamp);
+            var comments = replaceText(data[i].Comments);
+            text += `<div class="mb-4 border-b pb-2">
+                        <strong>${i + 1} 名前:</strong> <a href="mailto:${mail}" class="text-blue-600">${name}</a><br>
+                        <span class="text-xs text-gray-500">${timestamp}</span>
+                        <pre class="whitespace-pre-wrap bg-gray-50 p-2 rounded mt-1">${comments}</pre>
+                     </div>`;
+          }
+          d3.select("#comments").html(text);
+        });
+    </script>
+  </div>
+</div>
   
 <!-- Footer -->
   <footer class="text-center py-6 bg-gray-800 text-white">

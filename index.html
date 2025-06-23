@@ -286,7 +286,7 @@
                class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-300">
       </p>
       <p>
-        <textarea name="entry.1499394685" placeholder="コメント" rows="10" maxlength="400" id="wcheck" required
+        <textarea name="entry.1499394685" placeholder="コメント" rows="5" maxlength="400" id="wcheck" required
                   class="w-full px-4 py-2 border border-gray-300 rounded resize-y focus:outline-none focus:ring focus:border-blue-300"></textarea>
       </p>
       <input type="submit" id="submitbutton" value="送信"
@@ -319,7 +319,6 @@
           var text = "";
           for (var i = 0; i < data.length; i++) {
             var name = replaceText(data[i].Name);
-            var mail = replaceText(data[i].Mail);
             var timestamp = replaceText(data[i].Timestamp);
             var comments = replaceText(data[i].Comments);
             text += `<div class="mb-4 border-b pb-2">

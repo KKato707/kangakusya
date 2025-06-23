@@ -67,91 +67,99 @@
       }
     }
 
+    /* ▼▼ 埋め込みリンクカード用 CSS ▼▼ */
     .embed-card {
-  max-width: 600px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  margin: 20px auto;
-  transition: transform 0.2s;
-}
-.embed-card:hover {
-  transform: scale(1.02);
-}
-.embed-link {
-  display: flex;
-  text-decoration: none;
-  color: inherit;
-  align-items: stretch;
-  height: 100%;
-}
-.embed-content {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-}
-.embed-text {
-  flex: 2;
-  padding: 16px;
-}
-.embed-image {
-  flex: 1;
-  min-width: 120px;
-  max-width: 180px;
-  overflow: hidden;
-}
-.embed-image img {
-  width: 100%;
-  height: auto;/* ← 高さを自動調整に */
-  object-fit: cover;
-  display: block;
-}
-.title {
-  font-weight: 600;
-  font-size: 16px;
-  margin-bottom: 4px;
-}
-.description {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 8px;
-}
-.url {
-  font-size: 13px;
-  color: #1a73e8;
-}
-@media (max-width: 600px) {
-  .embed-content {
-    flex-direction: column;
-  }
-  .embed-image {
-    max-height: none;
-  }
-}
+      max-width: 600px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      margin: 20px auto;
+      transition: transform 0.2s;
+    }
+    .embed-card:hover {
+      transform: scale(1.02);
+    }
+    .embed-link {
+      display: flex;
+      text-decoration: none;
+      color: inherit;
+      align-items: stretch;
+      height: 100%;
+    }
+    .embed-content {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      flex-wrap: wrap; /* ← 画面幅が狭いときに折り返す */
+    }
+    .embed-text {
+      flex: 2;
+      padding: 16px;
+      min-width: 200px;
+    }
+    .embed-image {
+      flex: 1;
+      min-width: 120px;
+      max-width: 180px;
+      overflow: hidden;
+      text-align: center;
+      padding: 8px;
+    }
+    .embed-image img {
+      max-width: 100%;
+      height: auto;
+      display: inline-block;
+      object-fit: cover;
+    }
+    .title {
+      font-weight: 600;
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+    .description {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 8px;
+    }
+    .url {
+      font-size: 13px;
+      color: #1a73e8;
+    }
 
+    @media (max-width: 600px) {
+      .embed-content {
+        flex-direction: column;
+      }
+      .embed-image {
+        max-width: 100%;
+      }
+    }
   </style>
 </head>
+  
 <body>
 
 <header>棚田の生物マップ　©2023環境楽社</header>
 
-  <p style="text-align: center; font-size: 1.5rem; color: #555; margin: 1rem;">調査専用webアプリを用いて<br>スマホで調査を実施しました。</p>
+<p style="text-align: center; font-size: 1.5rem; color: #555; margin: 1rem;">
+  調査専用webアプリを用いて<br>スマホで調査を実施しました。
+</p>
 
 <!-- 埋め込みリンクカード-->
 <div class="embed-card">
   <a href="https://goryotanadabiomap.glide.page" target="_blank" rel="noopener noreferrer" class="embed-link">
     <div class="embed-content">
       <div class="embed-text">
-        <div class="title">御領棚田生物マップ調査用アプリ）</div>
+        <div class="title">御領棚田生物マップ調査用アプリ</div>
         <div class="description">
           参加者が調査員となりスマホで生物情報をマッピングできる簡易的なWebアプリです。
         </div>
         <div class="url">https://goryotanadabiomap.glide.page</div>
       </div>
       <div class="embed-image">
-        <img src="webapp.png" alt="Webアプリ画像" class="w-full md:max-w-md h-auto" />
+        <img src="webapp.png" alt="Webアプリ画像" />
       </div>
     </div>
   </a>

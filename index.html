@@ -274,7 +274,7 @@
 </div>
 
 <!-- コメントセクション -->
-<div id="comments" class="py-16 px-6 bg-cover bg-center bg-fixed bg-white/50 bg-blend-overlay"
+<div id="contact" class="py-16 px-6 bg-cover bg-center bg-fixed bg-white/50 bg-blend-overlay"
   style="background-image: url('background1.jpg');">
   <div class="max-w-4xl mx-auto text-center bg-white/80 p-8 rounded-lg shadow">
     <!-- コメント入力 -->
@@ -293,7 +293,7 @@
     </form>
     <iframe onload='if(submitted){window.location="";}' id="hidden_iframe" name="hidden_iframe" style="display:none;"></iframe>
     <script type="text/javascript">
-      var NGComments = ["死", "バカ", "アホ", ".exe"];
+      var NGComments = ["死", "バカ","アホ", ".exe"];
       var regex = new RegExp(NGComments.join("|"));
       function test(wcheck) {
         if (wcheck.match(regex) != null) {
@@ -329,7 +329,7 @@
 
             text += `<div class="mb-4 border-b pb-2">
                         <strong>${i + 1} 名前:</strong> ${name}<br>
-                        <span class="text-xs text-gray-500">${timestamp}</span>
+                        <span class="text-xs text-black">${timestamp}</span>
                         <pre class="whitespace-pre-wrap bg-gray-50 p-2 rounded mt-1">${comments}</pre>
                      </div>`;
           }
